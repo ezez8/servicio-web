@@ -30,3 +30,13 @@ class Section(Entity):
     ht = models.FloatField()
     hp = models.FloatField()
     hl = models.FloatField()
+
+class Person(BaseEntity):
+    dni = models.CharField(max_length=10)
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=25)
+
+class Enrollment(BaseEntity):
+    type = models.CharField(max_length=1, choices=[('S','STUDENT'),('T','TEACHER')])
+    section = models.ManyToManyField(Section) 
+    
