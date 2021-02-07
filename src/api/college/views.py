@@ -4,24 +4,36 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from rest_framework.views import APIView
+from rest_framework import mixins
+from rest_framework import generics
+
 from .models import Faculty, School, Section, Person, Enrollment
 from .serializers import FacultySerializer, SchoolSerializer, SectionSerializer, PersonSerializer
 
 # Create your views here.
 
 # --------------------------urls de facultad-------------------------------
-@api_view(['GET'])
-def list_faculty(request):
-    faculty_list = Faculty.objects.all()
-    serializer = FacultySerializer(faculty_list, many = True)
-    return Response(serializer.data)
+
+class FacultyList(generics.ListCreateAPIView):
+    queryset = Faculty.objects.all()
+    serializer_class = FacultySerializer
+
+class FacultyDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Faculty.objects.all()
+    serializer_class = FacultySerializer
+
 # --------------------------fin urls de facultad----------------------------
 # --------------------------urls de escuela-------------------------------
-@api_view(['GET'])
-def list_school(request):
-    school_list = School.objects.all()
-    serializer = SchoolSerializer(school_list, many = True)
-    return Response(serializer.data)
+
+class SchoolList(generics.ListCreateAPIView):
+    queryset = School.objects.all()
+    serializer_class = SchoolSerializer
+
+class SchoolDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = School.objects.all()
+    serializer_class = SchoolSerializer
+
 # --------------------------fin urls de escuela---------------------------
 # --------------------------urls de seccion-------------------------------
 @api_view(['GET'])
