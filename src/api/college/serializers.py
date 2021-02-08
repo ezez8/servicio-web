@@ -4,19 +4,19 @@ from .models import Faculty, School, Section, Person
 class FacultySerializer(serializers.ModelSerializer):
     class Meta:
         model = Faculty
-        fields = '__all__'
+        fields = ['id', 'name', 'description']
 
 class SchoolSerializer(serializers.ModelSerializer):
     class Meta:
         model = School
-        fields = '__all__'
+        fields = ['id', 'name', 'description', 'faculty']
 
 class SectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Section
-        fields = '__all__'
+        fields = ['id', 'name', 'description', 'uc', 'semester', 'type', 'ht', 'hp', 'hl', 'school']
 
 class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
-        fields = '__all__'
+        fields = ['id', 'dni', 'first_name', 'last_name']

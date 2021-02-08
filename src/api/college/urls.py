@@ -4,14 +4,18 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
 
-    path('list_faculty/', views.FacultyList.as_view()),
-    path('post_faculty/<int:pk>/', views.FacultyDetail.as_view()),
+    path('faculty_list/', views.FacultyList.as_view()),
+    path('faculty_detail/<int:pk>/', views.FacultyDetail.as_view()),
 
-    path('list_school/', views.SchoolList.as_view()),
-    path('post_school/<int:pk>/', views.SchoolDetail.as_view()),
+    path('school_list/', views.SchoolList.as_view()),
+    path('school_detail/<int:pk>/', views.SchoolDetail.as_view()),
 
-    path('list_section/', views.list_section,  name='api-list_section'),
-    path('list_person/', views.list_person,  name='api-list_person'),
+    path('section_list/', views.SectionList.as_view()),
+    path('section_detail/<int:pk>/', views.SectionDetail.as_view()),
+
+    path('person_list/', views.PersonList.as_view()),
+    path('person_detail/<int:pk>/', views.PersonDetail.as_view()),
+
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

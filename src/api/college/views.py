@@ -13,8 +13,6 @@ from .serializers import FacultySerializer, SchoolSerializer, SectionSerializer,
 
 # Create your views here.
 
-# --------------------------urls de facultad-------------------------------
-
 class FacultyList(generics.ListCreateAPIView):
     queryset = Faculty.objects.all()
     serializer_class = FacultySerializer
@@ -22,9 +20,6 @@ class FacultyList(generics.ListCreateAPIView):
 class FacultyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Faculty.objects.all()
     serializer_class = FacultySerializer
-
-# --------------------------fin urls de facultad----------------------------
-# --------------------------urls de escuela-------------------------------
 
 class SchoolList(generics.ListCreateAPIView):
     queryset = School.objects.all()
@@ -34,20 +29,18 @@ class SchoolDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = School.objects.all()
     serializer_class = SchoolSerializer
 
-# --------------------------fin urls de escuela---------------------------
-# --------------------------urls de seccion-------------------------------
-@api_view(['GET'])
-def list_section(request):
-    section_list = Section.objects.all()
-    serializer = SectionSerializer(section_list, many = True)
-    return Response(serializer.data)
-# --------------------------fin urls de seccion---------------------------
-# --------------------------urls de persona-------------------------------
-@api_view(['GET'])
-def list_person(request):
-    person_list = Person.objects.all()
-    serializer = PersonSerializer(person_list, many = True)
-    return Response(serializer.data)
-# --------------------------fin urls de persona---------------------------
+class SectionList(generics.ListCreateAPIView):
+    queryset = Section.objects.all()
+    serializer_class = SectionSerializer
 
+class SectionDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Section.objects.all()
+    serializer_class = SectionSerializer
 
+class PersonList(generics.ListCreateAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
+class PersonDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
